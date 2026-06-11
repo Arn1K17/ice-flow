@@ -811,10 +811,7 @@ def get_main_cash_summary():
         ops = ops_by_account[acc]
         current = round(initial + ops, 2)
         total += current
-        lines.append(
-            f"  {acc}: {current:,.0f} тг"
-            f"  (нач.: {initial:,.0f} + обороты: {ops:,.0f}, {count_by_account[acc]} оп.)"
-        )
+        lines.append(f"  {acc}: {current:,.0f} тг")
 
     result = f"Остатки по всем счетам на {data_date}:\n"
     result += "\n".join(lines)
@@ -886,10 +883,7 @@ def get_main_cash_summary_on_date(target_date: datetime):
         ops = ops_by_account[acc]
         current = round(initial + ops, 2)
         total += current
-        lines.append(
-            f"  {acc}: {current:,.0f} тг"
-            f"  (нач.: {initial:,.0f} + обороты: {ops:,.0f}, {count_by_account[acc]} оп.)"
-        )
+        lines.append(f"  {acc}: {current:,.0f} тг")
 
     result = f"Остатки по всем счетам на {date_label}:\n"
     result += "\n".join(lines)
@@ -1428,9 +1422,7 @@ def ask_ai(question: str) -> str:
                         ops_count += 1
             dds = round(initial + ops_total, 2)
             return (
-                f"Основная касса (Сейф) на {data_date}: {dds:,.0f} тг\n"
-                f"  Нач. остаток: {initial:,.0f} тг\n"
-                f"  + Обороты ({ops_count} оп.): {ops_total:,.0f} тг"
+                f"Основная касса (Сейф) на {data_date}: {dds:,.0f} тг"
             )
         except Exception as e:
             logger.error(f"seyf balance error: {e}")
@@ -1840,10 +1832,7 @@ def ask_ai(question: str) -> str:
                         result_content = f"Ошибка: {ops_count}"
                     else:
                         result_content = (
-                            f"Остаток по счёту '{acc}' на {date_str}:\n"
-                            f"  Нач. остаток: {initial:,.2f} тг\n"
-                            f"  + Операции ({ops_count} строк): {ops_total:,.2f} тг\n"
-                            f"  = Итого: {balance:,.2f} тг"
+                            f"Остаток по счёту '{acc}' на {date_str}: {balance:,.2f} тг"
                         )
 
                 elif tool_name == "get_all_accounts_summary":
@@ -1887,9 +1876,7 @@ def ask_ai(question: str) -> str:
                                 ops_count += 1
                     dds = round(initial + ops_total, 2)
                     result_content = (
-                        f"Основная касса (Сейф) на {data_date}: {dds:,.2f} тг\n"
-                        f"  Нач. остаток: {initial:,.2f} тг\n"
-                        f"  + Обороты ({ops_count} оп.): {ops_total:,.2f} тг"
+                        f"Основная касса (Сейф) на {data_date}: {dds:,.2f} тг"
                     )
 
                 elif tool_name == "find_operation_by_amount":
